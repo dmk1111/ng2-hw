@@ -1,0 +1,14 @@
+.cart-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px dashed lightslategray;
+  & > div {
+    flex-shrink: 0;
+    width: 120px;
+    margin: 5px;
+    padding: 0 5px 10px;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+  }
+}

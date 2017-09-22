@@ -1,0 +1,52 @@
+h1 {
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  & > div {
+    flex-shrink: 0;
+    width: 160px;
+    margin: 5px;
+    padding: 0 10px 10px;
+    border: 1px solid #000f92;
+    border-radius: 5px;
+  }
+}
+
+.other-stuff {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  & > div {
+    margin: 15px;
+  }
+}
+
+button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #6496c8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #558cc3;
+}
+
+button:active {
+  background-color: #3c73aa;
+}
+
+button:disabled {
+  color: #f2f2f2;
+  background-color: #d9e6f2;
+  cursor: not-allowed;
+}

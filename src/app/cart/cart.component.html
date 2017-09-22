@@ -1,0 +1,11 @@
+<div>
+  <h2>Items in your cart:</h2>
+  <div class="cart-items">
+    <div *ngFor="let product of purchased; let i = index" [attr.data-index]="i">
+      <p>Item: {{product.name}}</p>
+      <p>Price: {{product.price}} UAH</p>
+      <button (click)="removeItem(i)">Remove item</button>
+    </div>
+  </div>
+  <p>Total price: <b>{{price}}</b> UAH</p>
+</div>
