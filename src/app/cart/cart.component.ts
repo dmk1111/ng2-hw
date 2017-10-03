@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, DoCheck, Output, EventEmitter } from '@angular/core';
 import { Product } from '../products.class';
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
 import { AppComponent } from '../app.component';
 
 @Component({
-  providers: [CartService],
   selector: 'my-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
@@ -12,7 +11,7 @@ import { AppComponent } from '../app.component';
 export class CartComponent implements OnInit, DoCheck {
 
   @Input() purchased: Product[];
-  @Output() deleteEvent = new EventEmitter<string>();
+  @Output() deleteEvent = new EventEmitter<Product>();
 
   price: number;
 
@@ -33,13 +32,13 @@ export class CartComponent implements OnInit, DoCheck {
   calculateTotalPrice() {
     let calculatedPrice = 0;
     this.purchased.forEach(function (product) {
-      calculatedPrice += product.price;
+      calculatedPrice += product.price * product.amount;
     });
     this.price = calculatedPrice;
   }
 
-  removeItem(index): void {
-      this.deleteEvent.next(index);
+  removeItem(item: Product): void {
+      this.deleteEvent.next(item);
 
   }
 

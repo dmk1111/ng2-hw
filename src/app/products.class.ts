@@ -6,4 +6,5 @@ export class Product {
   price: number;
   category: Categories;
   isAvailable: boolean;
+  amount: number;
 }

@@ -6,7 +6,11 @@
     <p>Price: {{product.price}} UAH</p>
     <p>Category #{{product.category}}</p>
     <p>Available: {{product.isAvailable}}</p>
-    <button (click)="onBuy(product)" [disabled]="!product.isAvailable">Buy</button>
+    <div class="purchase">
+      <input #box type="number" placeholder="amount" value="box.value" [class.no-input]="!product.isAvailable">
+      <button (click)="onBuy(product, box.value)" [disabled]="!product.isAvailable">Buy</button>
+    </div>
+
   </div>
 </div>
 <div class="other-stuff">

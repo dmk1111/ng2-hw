@@ -50,3 +50,17 @@ button:disabled {
   background-color: #d9e6f2;
   cursor: not-allowed;
 }
+
+.purchase {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .no-input {
+    display: none;
+  }
+  input {
+    flex-shrink: 1;
+    width: 60px;
+    margin-right: 10px;
+  }
+}

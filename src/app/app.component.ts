@@ -1,23 +1,24 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from './products.class';
 import { ProductsService } from './products.service';
-import { CartService } from './cart.service';
+import { CartService } from './services/cart.service';
 import { Categories } from './categories.enum';
 
 @Component({
-  providers: [ProductsService, CartService],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit, DoCheck{
+export class AppComponent implements OnInit, DoCheck {
   name: string;
   description: string;
   price: number;
   category: Categories;
   isAvailable: boolean;
   products: Product[];
+  value = '';
+
   ingredients: string[] = [
     'Beurre manié',
     'brandy Brandy',
@@ -54,9 +55,14 @@ export class AppComponent implements OnInit, DoCheck{
   ngDoCheck() {
   }
 
-  onBuy(item): void {
+  onBuy(item: Product, amount: number): void {
     console.log(`You bought ${item.name}`);
-    this.cartService.addProductToCart(item);
+    if (!amount) {
+      amount = 1;
+    }
+    for (let i = 0; i < amount; i++) {
+      this.cartService.addProductToCart(item);
+    }
     this.getPurchased();
   }
 
@@ -68,8 +74,10 @@ export class AppComponent implements OnInit, DoCheck{
     this.purchased = this.cartService.getPurchasedProducts();
   }
 
-  removeItem(index): void {
-    this.cartService.removeFromCart(index);
+  removeItem(item: Product): void {
+    this.cartService.removeFromCart(item);
 
   }
+
+  update(value: string) { this.value = value; }
 }
